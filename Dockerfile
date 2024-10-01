@@ -1,0 +1,13 @@
+FROM amazoncorretto:21-alpine-full
+
+WORKDIR /app
+
+COPY target/BsDiscoveryServer-0.0.1-SNAPSHOT.jar /app/BsDiscoveryServer-0.0.1-SNAPSHOT.jar
+
+EXPOSE ${SERVER_PORT}
+
+ENV DISCOVERY_PASSWORD=${DISCOVERY_PASSWORD}
+ENV DISCOVERY_USERNAME=${DISCOVERY_USERNAME}
+ENV EUREKA_HOSTNAME=${EUREKA_HOSTNAME}
+
+ENTRYPOINT ["java", "-jar", "/app/BsDiscoveryServer-0.0.1-SNAPSHOT.jar"]
