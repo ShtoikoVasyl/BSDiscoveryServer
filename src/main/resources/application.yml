@@ -2,10 +2,13 @@ spring:
   application:
     name: BsDiscoveryServer
 server:
-  port: ${SERVER_PORT:8008}
+  port: ${EUREKA_SERVER_PORT:8008}
 eureka:
+  server:
+    eviction-interval-timer-in-ms: 20000
   instance:
     hostname: ${EUREKA_HOSTNAME:localhost}
+    lease-expiration-duration-in-seconds: 30
   client:
     registerWithEureka: false
     fetchRegistry: false
